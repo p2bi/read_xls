@@ -4,11 +4,11 @@ module ReadXls
       attr_accessor :value
 
       def initialize(value)
-        self.value = value == 1
+        self.value = value
       end
 
-      def to_s
-        value.to_s
+      def evaluate
+        value == 1
       end
     end
   end

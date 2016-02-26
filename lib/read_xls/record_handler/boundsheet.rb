@@ -22,7 +22,7 @@ module ReadXls
             .call(worksheet_builder, biff, record_number.to_s(16), record_data)
         end
 
-        builder.add_worksheet(worksheet_builder.build)
+        builder.add_worksheet_builder(worksheet_builder)
       end
 
       def read_data(bytes)

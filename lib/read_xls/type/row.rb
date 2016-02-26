@@ -14,8 +14,8 @@ module ReadXls
         raw_columns[column_index] = value
       end
 
-      def columns
-        raw_columns.values
+      def evaluate
+        raw_columns.values.map { |column| column.evaluate }
       end
     end
   end

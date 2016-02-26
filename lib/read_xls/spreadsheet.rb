@@ -12,8 +12,8 @@ module ReadXls
     end
 
     def initialize(ole)
-      self.position  = 0
-      self.biff      = ole.file.read("Workbook")
+      self.position = 0
+      self.biff     = ole.file.read("Workbook")
       self.workbook = parse_workbook
     ensure
       ole.close

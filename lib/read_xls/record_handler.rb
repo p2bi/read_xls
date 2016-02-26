@@ -125,6 +125,7 @@ module ReadXls
       BOUNDSHEET           => Boundsheet,
       BOOLERR              => Boolerr,
       SST                  => Sst,
+      LABELSST             => LabelSst,
 
       XF                   => Skip,
       DBCELL               => Skip,
@@ -165,7 +166,6 @@ module ReadXls
       FORCEFULLCALCULATION => Skip,
       COUNTRY              => Skip,
       RECALCID             => Skip,
-      LABELSST             => Skip,
       EXTSST               => Skip,
       THEME                => Skip,
       CALCCOUNT            => Skip,

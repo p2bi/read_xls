@@ -1,6 +1,6 @@
 module ReadXls
   class WorksheetBuilder
-    attr_accessor :rows
+    attr_accessor :rows, :sst
 
     def initialize
       self.rows = {}
@@ -16,7 +16,8 @@ module ReadXls
     end
 
     def build
-      ::ReadXls::Type::Worksheet.new(:rows => rows.values)
+      evaluated_rows = rows.values.map { |r| r.evaluate }
+      ::ReadXls::Type::Worksheet.new(:rows => evaluated_rows)
     end
   end
 end

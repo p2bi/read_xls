@@ -6,6 +6,10 @@ module ReadXls
       def initialize(strings)
         self.strings = strings
       end
+
+      def index(i)
+        strings[i]
+      end
     end
   end
 end
