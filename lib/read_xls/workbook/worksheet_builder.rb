@@ -17,8 +17,7 @@ module ReadXls
       end
 
       def build
-        evaluated_rows = build_rows
-        ::ReadXls::Workbook::Worksheet.new(:rows => evaluated_rows)
+        ::ReadXls::Workbook::Worksheet.new(:rows => build_rows)
       end
 
 

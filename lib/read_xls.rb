@@ -5,8 +5,9 @@ C = Contracts
 
 require "ole/storage"
 
-require "read_xls/column/sst_string"
 require "read_xls/column/boolean"
+require "read_xls/column/blank"
+require "read_xls/column/sst_string"
 
 require "read_xls/workbook"
 require "read_xls/workbook_builder"
