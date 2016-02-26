@@ -22,7 +22,7 @@ module ReadXls
           string_data[string_begin..string_end]
         end
 
-        builder.sst = ::ReadXls::Type::SharedStringTable.new(strings.uniq)
+        builder.sst = ::ReadXls::Workbook::SharedStringTable.new(strings.uniq)
       end
     end
   end

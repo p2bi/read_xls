@@ -12,7 +12,7 @@ module ReadXls
     end
 
     def build
-      workbook            = ::ReadXls::Type::Workbook.new
+      workbook            = ::ReadXls::Workbook.new
       workbook.worksheets = build_worksheets
       workbook
     end

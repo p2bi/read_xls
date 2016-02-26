@@ -6,7 +6,7 @@ module ReadXls
       attr_accessor :position
 
       def call
-        worksheet_builder = WorksheetBuilder.new
+        worksheet_builder = ::ReadXls::Workbook::WorksheetBuilder.new
         offset            = record_data.unpack("v").first
         self.position     = offset
 

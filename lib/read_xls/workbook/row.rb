@@ -1,5 +1,5 @@
 module ReadXls
-  module Type
+  class Workbook
     class Row
       attr_accessor :row_number, :first_col, :last_col, :raw_columns
 

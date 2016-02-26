@@ -5,15 +5,16 @@ C = Contracts
 
 require "ole/storage"
 
-require "read_xls/type/workbook"
-require "read_xls/type/worksheet"
-require "read_xls/type/boolean"
-require "read_xls/type/row"
-require "read_xls/type/shared_string_table"
-require "read_xls/type/sst_string"
+require "read_xls/column/sst_string"
+require "read_xls/column/boolean"
 
+require "read_xls/workbook"
 require "read_xls/workbook_builder"
-require "read_xls/worksheet_builder"
+require "read_xls/workbook/worksheet"
+require "read_xls/workbook/row"
+require "read_xls/workbook/shared_string_table"
+require "read_xls/workbook/worksheet_builder"
+
 
 require "read_xls/record_handler/base"
 require "read_xls/record_handler/skip"

@@ -1,5 +1,5 @@
 module ReadXls
-  module Type
+  class Workbook
     class SharedStringTable
       attr_accessor :strings
 

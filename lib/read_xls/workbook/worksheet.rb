@@ -1,5 +1,5 @@
 module ReadXls
-  module Type
+  class Workbook
     class Worksheet
       attr_accessor :rows
 

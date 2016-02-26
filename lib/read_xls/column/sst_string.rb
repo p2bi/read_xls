@@ -1,5 +1,5 @@
 module ReadXls
-  module Type
+  module Column
     class SstString
       attr_accessor :sst_index, :builder
 
