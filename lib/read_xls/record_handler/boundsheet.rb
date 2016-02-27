@@ -17,9 +17,12 @@ module ReadXls
           record_length = read_byte
           record_data   = read_data(record_length)
 
-          ::ReadXls::RecordHandler
-            .for(record_number)
-            .call(worksheet_builder, biff, record_number.to_s(16), record_data)
+          ::ReadXls::RecordHandler.call(
+            record_number,
+            worksheet_builder,
+            biff,
+            record_data
+          )
         end
 
         builder.add_worksheet_builder(worksheet_builder)

@@ -116,6 +116,7 @@ module ReadXls
     FEATHEADR            = 0x0867
     FEATHEADR11          = 0x0871
     FEATINFO             = 0x086d
+    PLS                  = 0x004d
     UNKNOWN1             = 0x105c
     UNKNOWN2             = 0x08d6
 
@@ -126,6 +127,9 @@ module ReadXls
       BOOLERR              => Boolerr,
       SST                  => Sst,
       LABELSST             => LabelSst,
+      MULRK                => MulRk,
+      BLANK                => Blank,
+      RK                   => Rk,
 
       XF                   => Skip,
       DBCELL               => Skip,
@@ -198,17 +202,16 @@ module ReadXls
       FEATHEADR11          => Skip,
       FEATINFO             => Skip,
       SELECTION            => Skip,
+      PLS                  => Skip,
+      COLINFO              => Skip,
       UNKNOWN1             => Skip,
       UNKNOWN2             => Skip,
 
       ARRAY                => NotImplemented,
-      BLANK                => NotImplemented,
       SHRFMLA              => NotImplemented,
       BOF_2                => NotImplemented,
       BOF_3                => NotImplemented,
       BOF_4                => NotImplemented,
-      BLANK                => NotImplemented,
-      COLINFO              => NotImplemented,
       CONTINUE             => NotImplemented,
       EOF                  => NotImplemented,
       FORMULA              => NotImplemented,
@@ -216,9 +219,7 @@ module ReadXls
       LABEL                => NotImplemented,
       MERGEDCELLS          => NotImplemented,
       MULBLANK             => NotImplemented,
-      MULRK                => NotImplemented,
       NUMBER               => NotImplemented,
-      RK                   => NotImplemented,
       RSTRING              => NotImplemented,
       STRING               => NotImplemented,
       SHAREDFMLA           => NotImplemented,
@@ -241,8 +242,9 @@ module ReadXls
       TXO                  => NotImplemented
     }
 
-    def self.for(record_number)
-      MAPPINGS[record_number] || raise(RecordHandlerNotFound, "couldn't find record handler for #{record_number.to_s(16)}")
+    def self.call(record_number, builder, biff, record_data)
+      record_handler = MAPPINGS[record_number] || raise(RecordHandlerNotFound, "couldn't find record handler for #{record_number.to_s(16)}")
+      record_handler.call(record_number.to_s(16), builder, biff, record_data)
     end
   end
 end

@@ -16,7 +16,7 @@ module ReadXls
 
       def evaluate
         columns.each_with_index.each do |_, column_index|
-          columns[column_index] ||= ::ReadXls::Column::Blank.new
+          columns[column_index] ||= ::ReadXls::Column::Null.new
         end
 
         columns.map { |c| c.evaluate }

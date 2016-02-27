@@ -1,16 +1,16 @@
 module ReadXls
   module RecordHandler
     class Base
-      attr_accessor :builder, :biff, :record_number, :record_data
+      attr_accessor :record_number, :builder, :biff, :record_data
 
-      def self.call(builder, biff, record_number, record_data)
-        new(builder, biff, record_number, record_data).call
+      def self.call(record_number, builder, biff, record_data)
+        new(record_number, builder, biff, record_data).call
       end
 
-      def initialize(builder, biff, record_number, record_data)
+      def initialize(record_number, builder, biff, record_data)
+        self.record_number =record_number
         self.builder       = builder
         self.biff          = biff
-        self.record_number =record_number
         self.record_data   = record_data
       end
     end
