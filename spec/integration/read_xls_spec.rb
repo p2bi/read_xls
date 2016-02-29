@@ -38,16 +38,6 @@ describe ReadXls do
       expect(spreadsheet.sheets.first.rows[0]).to eq(["a", nil, "b", nil, "c", nil, "d"])
       expect(spreadsheet.sheets.first.rows[1]).to eq([nil, "e", nil, "f", nil, "g"])
     end
-
-    it "parses dates" do
-      spreadsheet = ReadXls.parse(
-        get_spreadsheet_path("dates.xls")
-      )
-
-      expect(spreadsheet.sheets.first.rows.length).to eq(16)
-      date = spreadsheet.sheets.first.rows[0][0]
-      expect(date).to eq("1/1/15")
-    end
   end
 
   def get_spreadsheet_path(name)

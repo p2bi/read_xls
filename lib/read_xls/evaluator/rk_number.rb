@@ -23,8 +23,36 @@ module ReadXls
                 else
                   value / 100.0
                 end
-        
-        value
+
+        format_value(value)
+      end
+
+
+      private
+
+      def format_value(value)
+        case extended_format.format_type
+          when :date
+            big_value           = BigDecimal.new(value.to_s)
+            days_since_datemode = big_value.to_i
+            inner_day_fraction  = big_value.frac
+
+            if inner_day_fraction == 0
+              build_date(days_since_datemode)
+            else
+              raise NotImplementedError
+            end
+          else
+            value
+        end
+      end
+
+      def extended_format
+        builder.extended_formats[xf_index]
+      end
+
+      def build_date(days_since_datemode)
+        Date.new(1899,12,30) + days_since_datemode
       end
     end
   end

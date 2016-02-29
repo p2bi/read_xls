@@ -3,6 +3,7 @@ require "read_xls/version"
 require "contracts"
 C = Contracts
 
+require "bigdecimal"
 require "ole/storage"
 
 require "read_xls/evaluator/boolean"
