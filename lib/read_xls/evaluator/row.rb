@@ -19,7 +19,7 @@ module ReadXls
           columns[column_index] ||= ::ReadXls::Evaluator::Blank.new
         end
 
-        columns.map { |c| c.evaluate }
+        columns.map(&:evaluate)
       end
     end
   end

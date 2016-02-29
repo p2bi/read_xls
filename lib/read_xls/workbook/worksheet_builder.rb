@@ -1,10 +1,11 @@
 module ReadXls
   class Workbook
     class WorksheetBuilder
-      attr_accessor :rows, :sst, :formats, :extended_formats
+      attr_accessor :rows, :formula_strings, :sst, :formats, :extended_formats
 
       def initialize
-        self.rows = []
+        self.rows            = []
+        self.formula_strings = []
       end
 
       def add_row(row_index, row)
@@ -16,8 +17,16 @@ module ReadXls
         row.add_column(column_index, value)
       end
 
+      def add_formula_string(string)
+        self.formula_strings.push(string)
+      end
+
       def build
         ::ReadXls::Workbook::Worksheet.new(:rows => build_rows)
+      end
+
+      def next_formula_string!
+        self.formula_strings.shift
       end
 
 
