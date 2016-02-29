@@ -1,5 +1,5 @@
 module ReadXls
-  module Column
+  module Evaluator
     class Boolean
       attr_accessor :value
 

@@ -1,7 +1,7 @@
 module ReadXls
   class Workbook
     class WorksheetBuilder
-      attr_accessor :rows, :sst
+      attr_accessor :rows, :sst, :formats, :extended_formats
 
       def initialize
         self.rows = []
@@ -25,10 +25,10 @@ module ReadXls
 
       def build_rows
         rows.each_with_index.each do |_, row_index|
-          rows[row_index] ||= ::ReadXls::Workbook::Row.new(row_index, 0, 0)
+          rows[row_index] ||= ::ReadXls::Evaluator::Row.new(row_index, 0, 0)
         end
 
-        rows.map { |r| r.evaluate }
+        rows.map(&:evaluate)
       end
     end
   end

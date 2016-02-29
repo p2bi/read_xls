@@ -1,6 +1,6 @@
 module ReadXls
-  module Column
-    class Null
+  module Evaluator
+    class Blank
       def evaluate
         nil
       end

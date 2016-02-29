@@ -40,15 +40,13 @@ describe ReadXls do
     end
 
     it "parses dates" do
-      pending
       spreadsheet = ReadXls.parse(
         get_spreadsheet_path("dates.xls")
       )
 
-      expect(spreadsheet.sheets.first.rows.length).to eq(1)
-      dates = spreadsheet.sheets.first.rows[0]
-      expect(dates.length).to eq(16)
-      expect(dates[0]).to eq("1/1/15")
+      expect(spreadsheet.sheets.first.rows.length).to eq(16)
+      date = spreadsheet.sheets.first.rows[0][0]
+      expect(date).to eq("1/1/15")
     end
   end
 

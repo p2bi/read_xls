@@ -4,7 +4,7 @@ module ReadXls
       def call
         row, column = record_data[0, 4].unpack("v2")
 
-        builder.add_column_to_row(row, column, ::ReadXls::Column::Null.new)
+        builder.add_column_to_row(row, column, ::ReadXls::Evaluator::Blank.new)
       end
     end
   end

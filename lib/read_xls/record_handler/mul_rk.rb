@@ -3,8 +3,6 @@ module ReadXls
     class MulRk < ::ReadXls::RecordHandler::Base
       RKREC_SIZE       = 6
       RK_DATA_OFFSET   = 4
-      RK_NUMBER_OFFSET = 2
-      RK_NUMBER_SIZE   = 4
 
       def call
         row, first_column = record_data[0, 4].unpack("v2")
@@ -13,10 +11,10 @@ module ReadXls
         rk_data           = record_data[RK_DATA_OFFSET..-3]
 
         number_of_columns.times.each do |column_index|
-          rk_rec   = rk_data[(column_index * RKREC_SIZE), RKREC_SIZE]
-          rk_bits = rk_rec[RK_NUMBER_OFFSET, RK_NUMBER_SIZE].unpack("V").first
+          rk_rec  = rk_data[(column_index * RKREC_SIZE), RKREC_SIZE]
+          ix_index, rk_bits = rk_rec[0, RKREC_SIZE].unpack("vV")
 
-          rk_column = ::ReadXls::Column::RkNumber.new(rk_bits)
+          rk_column = ::ReadXls::Evaluator::RkNumber.new(builder, rk_bits, ix_index)
 
           builder.add_column_to_row(
             row,

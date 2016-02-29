@@ -1,5 +1,5 @@
 module ReadXls
-  module Column
+  module Evaluator
     class SstString
       attr_accessor :sst_index, :builder
 

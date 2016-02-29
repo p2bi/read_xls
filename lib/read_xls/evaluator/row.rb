@@ -1,5 +1,5 @@
 module ReadXls
-  class Workbook
+  module Evaluator
     class Row
       attr_accessor :row_number, :first_col, :last_col, :columns
 
@@ -16,7 +16,7 @@ module ReadXls
 
       def evaluate
         columns.each_with_index.each do |_, column_index|
-          columns[column_index] ||= ::ReadXls::Column::Null.new
+          columns[column_index] ||= ::ReadXls::Evaluator::Blank.new
         end
 
         columns.map { |c| c.evaluate }

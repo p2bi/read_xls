@@ -8,7 +8,7 @@ module ReadXls
         row, column = record_data[0, 4].unpack("v2")
         sst_index   = record_data[SST_INDEX_OFFSET, SST_INDEX_SIZE].unpack("V").first
 
-        builder.add_column_to_row(row, column, ::ReadXls::Column::SstString.new(sst_index, builder))
+        builder.add_column_to_row(row, column, ::ReadXls::Evaluator::SstString.new(sst_index, builder))
       end
     end
   end
