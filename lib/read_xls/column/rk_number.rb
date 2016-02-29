@@ -19,7 +19,7 @@ module ReadXls
         if (rk_bits & 0x01) == 0
           value
         else
-          value / 100
+          value / 100.0
         end
       end
     end
