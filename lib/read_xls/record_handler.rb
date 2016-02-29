@@ -132,6 +132,7 @@ module ReadXls
       XF                   => Xf,
       RK                   => Rk,
       FORMAT               => Format,
+      NUMBER               => Number,
 
       DBCELL               => Skip,
       INDEX                => Skip,
@@ -219,7 +220,6 @@ module ReadXls
       LABEL                => NotImplemented,
       MERGEDCELLS          => NotImplemented,
       MULBLANK             => NotImplemented,
-      NUMBER               => NotImplemented,
       RSTRING              => NotImplemented,
       STRING               => NotImplemented,
       SHAREDFMLA           => NotImplemented,

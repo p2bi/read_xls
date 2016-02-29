@@ -23,9 +23,15 @@ describe ReadXls do
       expect(spreadsheet.sheets.first.rows[12][0]).to eq(Date.new(2016, 2, 14))
       expect(spreadsheet.sheets.first.rows[13][0]).to eq(Date.new(2016, 3, 14))
     end
-  end
 
-  def get_spreadsheet_path(name)
-    File.join(File.expand_path(File.dirname(__FILE__)), "/spreadsheets/#{name}")
+    it "parses simple times" do
+      spreadsheet = ReadXls.parse(
+        get_spreadsheet_path("times.xls")
+      )
+
+      expect(spreadsheet.sheets.first.rows.length).to eq(14)
+      expect(spreadsheet.sheets.first.rows[0][0]).to eq(Time.parse("2015-01-01T23:59:59Z"))
+      expect(spreadsheet.sheets.first.rows[1][0]).to eq(Time.parse("2015-02-02T00:00:01Z"))
+    end
   end
 end

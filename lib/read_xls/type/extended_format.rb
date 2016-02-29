@@ -14,7 +14,7 @@ module ReadXls
       def format_type
         matched_types = FORMAT_MATCHERS.select { |matcher, _| format_string =~ matcher }
 
-        if matched_types.length != 1
+        if matched_types.length > 1
           raise "got more than one match, expected only one matched format type"
         end
 
