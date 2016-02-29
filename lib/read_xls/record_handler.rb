@@ -88,6 +88,7 @@ module ReadXls
     VPAGEBREAKS          = 0x001a
     HEADER               = 0x0014
     FOOTER               = 0x0015
+    HEADERFOOTER         = 0x089c
     HCENTER              = 0x0083
     VCENTER              = 0x0084
     LEFTMARGIN           = 0x0026
@@ -117,6 +118,7 @@ module ReadXls
     FEATHEADR11          = 0x0871
     FEATINFO             = 0x086d
     PLS                  = 0x004d
+    EXCEL9FILE           = 0x01c0
     UNKNOWN1             = 0x105c
     UNKNOWN2             = 0x08d6
 
@@ -133,6 +135,8 @@ module ReadXls
       RK                   => Rk,
       FORMAT               => Format,
       NUMBER               => Number,
+      FORMULA              => Formula,
+      STRING               => String,
 
       DBCELL               => Skip,
       INDEX                => Skip,
@@ -205,8 +209,10 @@ module ReadXls
       SELECTION            => Skip,
       PLS                  => Skip,
       COLINFO              => Skip,
+      EXCEL9FILE           => Skip,
       UNKNOWN1             => Skip,
       UNKNOWN2             => Skip,
+      HEADERFOOTER         => Skip,
 
       ARRAY                => NotImplemented,
       SHRFMLA              => NotImplemented,
@@ -215,13 +221,11 @@ module ReadXls
       BOF_4                => NotImplemented,
       CONTINUE             => NotImplemented,
       EOF                  => NotImplemented,
-      FORMULA              => NotImplemented,
       HLINK                => NotImplemented,
       LABEL                => NotImplemented,
       MERGEDCELLS          => NotImplemented,
       MULBLANK             => NotImplemented,
       RSTRING              => NotImplemented,
-      STRING               => NotImplemented,
       SHAREDFMLA           => NotImplemented,
       UNCALCED             => NotImplemented,
       OBJECTPROT           => NotImplemented,

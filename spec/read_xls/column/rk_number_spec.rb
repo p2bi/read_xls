@@ -30,7 +30,7 @@ module ReadXls
       specify "type 3" do
         type_3_number = 0x02f1853b
 
-        rk_number = RkNumber.new(fake_builder, type_3_number, 0)
+        rk_number = RkNumber.new(fake_builder, type_3_number, 0 )
 
         expect(rk_number.evaluate).to eq(123456.78)
       end
