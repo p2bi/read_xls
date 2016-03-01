@@ -5,12 +5,12 @@ module ReadXls
       RK_DATA_OFFSET = 4
 
       def call
-        row, first_column = record_data
-                              .byteslice(0, 4)
-                              .unpack("v2")
-        last_column       = record_data[-2, 2].unpack("v").first
-        number_of_columns = last_column - first_column + 1
-        rk_data           = record_data[RK_DATA_OFFSET..-3]
+        row, column_offset = record_data
+                               .byteslice(0, 4)
+                               .unpack("v2")
+        last_column        = record_data[-2, 2].unpack("v").first
+        number_of_columns  = last_column - column_offset + 1
+        rk_data            = record_data[RK_DATA_OFFSET..-3]
 
         number_of_columns.times.each do |column_index|
           rk_rec            = rk_data[(column_index * RKREC_SIZE), RKREC_SIZE]
@@ -20,7 +20,7 @@ module ReadXls
 
           builder.add_column_to_row(
             row,
-            column_index,
+            column_index + column_offset,
             rk_column
           )
         end

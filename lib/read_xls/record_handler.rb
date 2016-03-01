@@ -221,6 +221,7 @@ module ReadXls
       UNKNOWN1             => Skip,
       UNKNOWN2             => Skip,
       UNKNOWN3             => Skip,
+      MULBLANK             => Skip,
 
       ARRAY                => NotImplemented,
       SHRFMLA              => NotImplemented,
@@ -232,7 +233,6 @@ module ReadXls
       HLINK                => NotImplemented,
       LABEL                => NotImplemented,
       MERGEDCELLS          => NotImplemented,
-      MULBLANK             => NotImplemented,
       RSTRING              => NotImplemented,
       SHAREDFMLA           => NotImplemented,
       UNCALCED             => NotImplemented,
