@@ -119,6 +119,9 @@ module ReadXls
     FEATINFO             = 0x086d
     PLS                  = 0x004d
     EXCEL9FILE           = 0x01c0
+    BOOKEXT              = 0x0863
+    COMPRESSPICTURES     = 0x089b
+    COMPAT12             = 0x088c
     UNKNOWN1             = 0x105c
     UNKNOWN2             = 0x08d6
     UNKNOWN3             = 0x00ef
@@ -212,6 +215,9 @@ module ReadXls
       COLINFO              => Skip,
       EXCEL9FILE           => Skip,
       HEADERFOOTER         => Skip,
+      BOOKEXT              => Skip,
+      COMPRESSPICTURES     => Skip,
+      COMPAT12             => Skip,
       UNKNOWN1             => Skip,
       UNKNOWN2             => Skip,
       UNKNOWN3             => Skip,
