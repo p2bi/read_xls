@@ -4,7 +4,7 @@ describe ReadXls do
   describe ".parse" do
     it "parses simple dates" do
       spreadsheet = ReadXls.parse(
-        get_spreadsheet_path("dates.xls")
+        get_spreadsheet_path("time_dates.xls")
       )
 
       expect(spreadsheet.sheets.first.rows.length).to eq(14)
@@ -26,7 +26,7 @@ describe ReadXls do
 
     it "parses simple times" do
       spreadsheet = ReadXls.parse(
-        get_spreadsheet_path("times.xls")
+        get_spreadsheet_path("time_times.xls")
       )
 
       expect(spreadsheet.sheets.first.rows.length).to eq(14)

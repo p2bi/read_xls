@@ -4,7 +4,7 @@ describe ReadXls do
   describe ".parse" do
     it "parses formulas" do
       spreadsheet = ReadXls.parse(
-        get_spreadsheet_path("formulas.xls")
+        get_spreadsheet_path("formula.xls")
       )
 
 

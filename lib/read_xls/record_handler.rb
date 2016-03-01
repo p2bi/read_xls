@@ -121,6 +121,7 @@ module ReadXls
     EXCEL9FILE           = 0x01c0
     UNKNOWN1             = 0x105c
     UNKNOWN2             = 0x08d6
+    UNKNOWN3             = 0x00ef
 
     MAPPINGS = {
       BOF                  => Bof,
@@ -210,9 +211,10 @@ module ReadXls
       PLS                  => Skip,
       COLINFO              => Skip,
       EXCEL9FILE           => Skip,
+      HEADERFOOTER         => Skip,
       UNKNOWN1             => Skip,
       UNKNOWN2             => Skip,
-      HEADERFOOTER         => Skip,
+      UNKNOWN3             => Skip,
 
       ARRAY                => NotImplemented,
       SHRFMLA              => NotImplemented,
