@@ -122,6 +122,7 @@ module ReadXls
     BOOKEXT              = 0x0863
     COMPRESSPICTURES     = 0x089b
     COMPAT12             = 0x088c
+    STANDARDWIDTH        = 0x0099
     UNKNOWN1             = 0x105c
     UNKNOWN2             = 0x08d6
     UNKNOWN3             = 0x00ef
@@ -222,6 +223,7 @@ module ReadXls
       UNKNOWN2             => Skip,
       UNKNOWN3             => Skip,
       MULBLANK             => Skip,
+      STANDARDWIDTH        => Skip,
 
       ARRAY                => NotImplemented,
       SHRFMLA              => NotImplemented,

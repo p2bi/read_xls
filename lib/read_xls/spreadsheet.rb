@@ -1,9 +1,8 @@
 module ReadXls
   class Spreadsheet
-    ParsingFailedError = Class.new(StandardError)
-    BYTE_LENGTH        = 2
-
     attr_accessor :biff, :position, :workbook
+
+    ParsingFailedError = Class.new(StandardError)
 
     def self.parse(xls_file_path)
       new(
@@ -27,10 +26,10 @@ module ReadXls
       workbook_builder = WorkbookBuilder.new(biff)
 
       loop do
-        record_number = read_byte
+        record_number = read_word
         break if record_number == ::ReadXls::RecordHandler::EOF
 
-        record_length = read_byte
+        record_length = read_word
         record_data   = read_data(record_length)
 
         ::ReadXls::RecordHandler.call(
@@ -45,15 +44,14 @@ module ReadXls
     end
 
     def read_data(bytes)
-      val           = biff[position, bytes]
+      val           = biff.byteslice(position, bytes)
       self.position += bytes
       val
     end
 
-
-    def read_byte
-      val           = biff[position, BYTE_LENGTH].unpack("v")
-      self.position += BYTE_LENGTH
+    def read_word
+      val           = biff.byteslice(position, 2).unpack("v")
+      self.position += 2
       val.first || raise(ParsingFailedError, "expected to get value, got nil")
     end
   end

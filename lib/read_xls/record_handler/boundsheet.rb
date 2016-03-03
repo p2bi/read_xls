@@ -1,8 +1,6 @@
 module ReadXls
   module RecordHandler
     class Boundsheet < ::ReadXls::RecordHandler::Base
-      BYTE_LENGTH = 2
-
       attr_accessor :position
 
       def call
@@ -29,15 +27,15 @@ module ReadXls
       end
 
       def read_data(bytes)
-        val           = biff[position, bytes]
+        val           = biff.byteslice(position, bytes)
         self.position += bytes
         val
       end
 
 
       def read_byte
-        val           = biff[position, BYTE_LENGTH].unpack("v")
-        self.position += BYTE_LENGTH
+        val           = biff.byteslice(position, 2).unpack("v")
+        self.position += 2
         val.first || raise(ParsingFailedError, "expected to get value, got nil")
       end
     end
