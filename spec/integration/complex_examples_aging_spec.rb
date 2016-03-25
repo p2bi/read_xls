@@ -20,6 +20,7 @@ describe ReadXls do
       expect(invoice_row[3]).to eq(Date.parse("2016-02-29"))
       expect(invoice_row[5]).to eq("I")
       expect(invoice_row[8]).to eq(BigDecimal.new("9100.00"))
+      expect(invoice_row[11]).to eq(BigDecimal.new("9100.00"))
 
       last_row = sheet.rows.last
       expect(last_row.length).to eq(22)
