@@ -6,7 +6,7 @@ module ReadXls
 
     def self.parse(xls_file_path)
       new(
-        Ole::Storage.open(xls_file_path, "rb+")
+        Ole::Storage.open(xls_file_path, "rb")
       )
     end
 
